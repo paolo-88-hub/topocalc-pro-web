@@ -1,0 +1,75 @@
+{
+  "appName": "TopoCalc Pro",
+  "tabs": {
+    "home": "Accueil",
+    "calculs": "Calculs",
+    "terrain": "Terrain",
+    "rapports": "Rapports",
+    "profil": "Profil"
+  },
+  "home": {
+    "projetActif": "Projet actif",
+    "domaines": "Domaines de calcul",
+    "acces": "Accès rapide",
+    "calculs": "Calculs",
+    "rapports": "Rapports",
+    "enAttente": "En attente",
+    "ai": "Assistant IA",
+    "aiActif": "Actif",
+    "aiMsg": "Analysez vos données terrain et obtenez des recommandations techniques automatiques.",
+    "lancerCalc": "Lancer un calcul",
+    "savoirPlus": "En savoir plus"
+  },
+  "domaines": {
+    "routier": "Topométrie routière",
+    "cadastral": "Topométrie cadastrale",
+    "construction": "Topométrie construction",
+    "souterrain": "Topométrie souterraine",
+    "geodesie": "Géodésie & GPS",
+    "integres": "Calculs intégrés"
+  },
+  "calculs": {
+    "titre": "Calculs",
+    "calculer": "Calculer",
+    "resultat": "Résultat",
+    "etapes": "Étapes de calcul",
+    "retour": "Retour"
+  },
+  "terrain": {
+    "titre": "Collecte terrain",
+    "gpsVerrouille": "GPS verrouillé",
+    "gpsRecherche": "Recherche GPS...",
+    "gpsIndisponible": "GPS indisponible sur cet appareil",
+    "typeReleve": "Type de relevé",
+    "coordX": "X",
+    "coordY": "Y",
+    "altitude": "Z / Alt (m)",
+    "pointNum": "Point N°",
+    "observation": "Observation",
+    "enregistrer": "Enregistrer le point",
+    "donneesActives": "Points enregistrés",
+    "types": {
+      "topographique": "Point topographique",
+      "nivellement": "Station de nivellement",
+      "borne": "Borne cadastrale",
+      "cheminement": "Point de cheminement",
+      "implantation": "Implantation d'ouvrage"
+    }
+  },
+  "rapports": {
+    "titre": "Rapports",
+    "generes": "Rapports générés",
+    "nouveau": "Nouveau rapport"
+  },
+  "profil": {
+    "titre": "Profil",
+    "langue": "Langue",
+    "sync": "Synchronisation cloud",
+    "ai": "Assistant IA",
+    "horsLigne": "Mode hors ligne",
+    "apropos": "À propos",
+    "actif": "Activé",
+    "bientot": "Bientôt",
+    "planPro": "Plan Pro"
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "appName": "TopoCalc Pro",
+  "tabs": {
+    "home": "Home",
+    "calculs": "Calculations",
+    "terrain": "Field",
+    "rapports": "Reports",
+    "profil": "Profile"
+  },
+  "home": {
+    "projetActif": "Active project",
+    "domaines": "Calculation domains",
+    "acces": "Quick access",
+    "calculs": "Calculations",
+    "rapports": "Reports",
+    "enAttente": "Pending",
+    "ai": "AI Assistant",
+    "aiActif": "Active",
+    "aiMsg": "Analyze your field data and get automatic technical recommendations.",
+    "lancerCalc": "Launch calculation",
+    "savoirPlus": "Learn more"
+  },
+  "domaines": {
+    "routier": "Road surveying",
+    "cadastral": "Cadastral surveying",
+    "construction": "Construction surveying",
+    "souterrain": "Underground surveying",
+    "geodesie": "Geodesy & GPS",
+    "integres": "Integrated calculations"
+  },
+  "calculs": {
+    "titre": "Calculations",
+    "calculer": "Calculate",
+    "resultat": "Result",
+    "etapes": "Calculation steps",
+    "retour": "Back"
+  },
+  "terrain": {
+    "titre": "Field collection",
+    "gpsVerrouille": "GPS locked",
+    "gpsRecherche": "Searching GPS...",
+    "gpsIndisponible": "GPS unavailable on this device",
+    "typeReleve": "Survey type",
+    "coordX": "X",
+    "coordY": "Y",
+    "altitude": "Z / Alt (m)",
+    "pointNum": "Point No.",
+    "observation": "Observation",
+    "enregistrer": "Save point",
+    "donneesActives": "Saved points",
+    "types": {
+      "topographique": "Topographic point",
+      "nivellement": "Levelling station",
+      "borne": "Cadastral marker",
+      "cheminement": "Traverse point",
+      "implantation": "Structure layout"
+    }
+  },
+  "rapports": {
+    "titre": "Reports",
+    "generes": "Generated reports",
+    "nouveau": "New report"
+  },
+  "profil": {
+    "titre": "Profile",
+    "langue": "Language",
+    "sync": "Cloud sync",
+    "ai": "AI Assistant",
+    "horsLigne": "Offline mode",
+    "apropos": "About",
+    "actif": "Enabled",
+    "bientot": "Coming soon",
+    "planPro": "Pro Plan"
+  }
+}
