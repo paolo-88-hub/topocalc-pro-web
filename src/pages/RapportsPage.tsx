@@ -19,6 +19,10 @@ export function RapportsPage() {
   const [loading, setLoading] = useState(false);
 
   function handlePDF() {
+    if (!projet) {
+      alert('Crée un projet depuis l\'accueil avant de générer un rapport.');
+      return;
+    }
     setLoading(true);
     try {
       generateRapportPDF(projet, calcResults, terrainPoints);
@@ -29,7 +33,10 @@ export function RapportsPage() {
 
   function handleFormat(fmt: string) {
     if (fmt === 'PDF') return handlePDF();
-    if (fmt === 'CSV') return exportPointsCSV(terrainPoints, `${projet.nom.replace(/\s+/g, '_')}_points.csv`);
+    if (fmt === 'CSV') {
+      const filename = projet ? `${projet.nom.replace(/\s+/g, '_')}_points.csv` : 'points-terrain.csv';
+      return exportPointsCSV(terrainPoints, filename);
+    }
     alert(`Export ${fmt} — disponible dans la version complète.`);
   }
 

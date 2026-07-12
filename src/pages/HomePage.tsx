@@ -2,6 +2,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Icon } from '../components/Icon';
 import { DomainCard, DOMAIN_ICONS } from '../components/DomainCard';
+import { CreateProjectForm } from '../components/CreateProjectForm';
 import { useProjectStore, DomainKey } from '../store/useProjectStore';
 
 const DOMAINS: { key: DomainKey; count: number }[] = [
@@ -24,7 +25,7 @@ const QUICK: { label: string; icon: 'slope' | 'compass' | 'ruler' | 'car' | 'are
 
 export function HomePage({ onGoCalculs }: { onGoCalculs: () => void }) {
   const { t } = useTranslation();
-  const { projet, terrainPoints, calcResults, setActiveDomain } = useProjectStore();
+  const { projet, setProjet, terrainPoints, rapports, calcResults, setActiveDomain } = useProjectStore();
 
   function goDomain(key: DomainKey) {
     setActiveDomain(key);
@@ -44,34 +45,42 @@ export function HomePage({ onGoCalculs }: { onGoCalculs: () => void }) {
           </div>
         </div>
 
-        <div className="bg-white/[0.08] rounded-xl p-3.5 border border-white/[0.15]">
-          <div className="flex items-center gap-2.5 mb-2.5">
-            <Icon name="road" size={18} className="text-white/80" />
-            <div className="flex-1 min-w-0">
-              <div className="text-white text-[13px] font-bold truncate">{projet.nom}</div>
-              <div className="text-white/55 text-[10px] mt-0.5">
-                {t(`domaines.${projet.type}`)} · {calcResults.length + 47} calculs
+        {projet && (
+          <div className="bg-white/[0.08] rounded-xl p-3.5 border border-white/[0.15]">
+            <div className="flex items-center gap-2.5 mb-2.5">
+              <Icon name="road" size={18} className="text-white/80" />
+              <div className="flex-1 min-w-0">
+                <div className="text-white text-[13px] font-bold truncate">{projet.nom}</div>
+                <div className="text-white/55 text-[10px] mt-0.5">
+                  {t(`domaines.${projet.type}`)} · {calcResults.length} calculs
+                </div>
               </div>
             </div>
+            <div className="bg-white/15 rounded h-[5px] mb-1">
+              <div className="bg-accent h-[5px] rounded" style={{ width: `${projet.avancement}%` }} />
+            </div>
+            <div className="text-white/50 text-[10px] mb-2.5">Avancement : {projet.avancement}%</div>
+            <div className="flex gap-2">
+              {[
+                { val: calcResults.length, lbl: t('home.calculs'), color: 'text-white' },
+                { val: rapports.length, lbl: t('home.rapports'), color: 'text-accent' },
+                { val: terrainPoints.length, lbl: 'Points terrain', color: 'text-warning' },
+              ].map((s, i) => (
+                <div key={i} className="flex-1 bg-white/[0.08] rounded-lg p-2 text-center">
+                  <div className={`text-[16px] font-bold ${s.color}`}>{s.val}</div>
+                  <div className="text-white/50 text-[9px] mt-0.5">{s.lbl}</div>
+                </div>
+              ))}
+            </div>
           </div>
-          <div className="bg-white/15 rounded h-[5px] mb-1">
-            <div className="bg-accent h-[5px] rounded" style={{ width: `${projet.avancement}%` }} />
-          </div>
-          <div className="text-white/50 text-[10px] mb-2.5">Avancement : {projet.avancement}%</div>
-          <div className="flex gap-2">
-            {[
-              { val: calcResults.length + 47, lbl: t('home.calculs'), color: 'text-white' },
-              { val: 12, lbl: t('home.rapports'), color: 'text-accent' },
-              { val: 3, lbl: t('home.enAttente'), color: 'text-warning' },
-            ].map((s, i) => (
-              <div key={i} className="flex-1 bg-white/[0.08] rounded-lg p-2 text-center">
-                <div className={`text-[16px] font-bold ${s.color}`}>{s.val}</div>
-                <div className="text-white/50 text-[9px] mt-0.5">{s.lbl}</div>
-              </div>
-            ))}
-          </div>
-        </div>
+        )}
       </div>
+
+      {!projet && (
+        <div className="mt-4">
+          <CreateProjectForm onCreate={setProjet} />
+        </div>
+      )}
 
       <div className="px-4 mt-4">
         <div className="bg-surface rounded-xl border border-border overflow-hidden shadow-card">

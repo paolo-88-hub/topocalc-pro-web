@@ -55,7 +55,7 @@ export interface Project {
 interface AppState {
   langue: 'fr' | 'en';
   setLangue: (l: 'fr' | 'en') => void;
-  projet: Project;
+  projet: Project | null;
   setProjet: (p: Project) => void;
   terrainPoints: TerrainPoint[];
   addTerrainPoint: (p: TerrainPoint) => void;
@@ -94,35 +94,10 @@ export const useProjectStore = create<AppState>((set, get) => ({
   langue: persisted?.langue || 'fr',
   setLangue: (l) => { persist({ langue: l }); set({ langue: l }); },
 
-  projet: persisted?.projet || {
-    id: '1',
-    nom: 'RN2 — Bafoussam / Foumban',
-    type: 'routier',
-    description: 'Projet routier national',
-    avancement: 39,
-    dateDebut: '2026-05-01',
-    pkDebut: '8+000',
-    pkFin: '18+000',
-    responsable: 'BDL Studio',
-  },
+  projet: persisted?.projet ?? null,
   setProjet: (p) => { persist({ projet: p }); set({ projet: p }); },
 
-  terrainPoints: persisted?.terrainPoints || [
-    {
-      id: '1', numero: 'P-045', type: 'topographique',
-      x: 731200, y: 421010, z: 890.2,
-      observation: 'Piquetage axe',
-      latitude: 3.8832, longitude: 11.5162,
-      timestamp: Date.now() - 3600000,
-    },
-    {
-      id: '2', numero: 'P-046', type: 'topographique',
-      x: 731218, y: 421044, z: 905.8,
-      observation: 'Zone critique pente 18%',
-      latitude: 3.8833, longitude: 11.5165,
-      timestamp: Date.now() - 1800000,
-    },
-  ],
+  terrainPoints: persisted?.terrainPoints || [],
   addTerrainPoint: (p) => {
     const list = [...get().terrainPoints, p];
     persist({ terrainPoints: list });
@@ -141,18 +116,7 @@ export const useProjectStore = create<AppState>((set, get) => ({
     set({ calcResults: list });
   },
 
-  rapports: persisted?.rapports || [
-    {
-      id: '1', nom: 'Rapport pentes — RN2 PK12-15',
-      type: 'pdf', date: Date.now() - 86400000,
-      taille: '2.4 MB', points: 8,
-    },
-    {
-      id: '2', nom: 'Cubatures déblais/remblais',
-      type: 'csv', date: Date.now() - 172800000,
-      taille: '180 KB', points: 48,
-    },
-  ],
+  rapports: persisted?.rapports || [],
   addRapport: (r) => {
     const list = [r, ...get().rapports];
     persist({ rapports: list });

@@ -61,21 +61,27 @@ export function ProfilPage() {
       <div className="px-4 mt-4">
         <div className="text-[10px] font-bold text-textSecondary uppercase tracking-wide mb-2.5">Projet actif</div>
         <div className="bg-surface rounded-xl border border-border overflow-hidden shadow-card">
-          {[
-            ['Nom', projet.nom],
-            ['Type', projet.type],
-            ['Tronçon', projet.pkDebut ? `PK ${projet.pkDebut} – ${projet.pkFin}` : '—'],
-            ['Responsable', projet.responsable],
-            ['Avancement', `${projet.avancement}%`],
-          ].map(([k, v], i, arr) => (
-            <div
-              key={k}
-              className={`flex justify-between px-3.5 py-2.5 border-b border-border ${i === arr.length - 1 ? 'border-0' : ''}`}
-            >
-              <span className="text-[12px] text-textSecondary">{k}</span>
-              <span className="text-[12px] font-bold text-textPrimary">{v}</span>
+          {!projet ? (
+            <div className="p-4 text-center text-textMuted text-[13px]">
+              Aucun projet actif — crée-en un depuis l'accueil.
             </div>
-          ))}
+          ) : (
+            [
+              ['Nom', projet.nom],
+              ['Type', projet.type],
+              ['Tronçon', projet.pkDebut ? `PK ${projet.pkDebut} – ${projet.pkFin}` : '—'],
+              ['Responsable', projet.responsable],
+              ['Avancement', `${projet.avancement}%`],
+            ].map(([k, v], i, arr) => (
+              <div
+                key={k}
+                className={`flex justify-between px-3.5 py-2.5 border-b border-border ${i === arr.length - 1 ? 'border-0' : ''}`}
+              >
+                <span className="text-[12px] text-textSecondary">{k}</span>
+                <span className="text-[12px] font-bold text-textPrimary">{v}</span>
+              </div>
+            ))
+          )}
         </div>
       </div>
 
